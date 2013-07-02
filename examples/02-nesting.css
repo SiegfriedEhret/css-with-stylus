@@ -1,0 +1,10 @@
+.ma-liste {
+  float: left;
+}
+.ma-liste a {
+  display: block;
+}
+.ma-liste a:hover,
+.ma-liste a:focus {
+  text-decoration: none;
+}

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS with Stylus</title>
+
+		<meta name="description" content="CSS pre-processing with Stylus (instead of Sass)">
+		<meta name="author" content="Siegfried Ehret">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-markdown>
+					<script type="text/template">
+            # CSS with Stylus
+
+            Copié sur [CSS kick-ass avec sass](http://slid.es/hugogiraudel/css-kick-ass-avec-sass/) par [@hugogiraudel](http://twitter.com/hugogiraudel)
+            
+            Bidouillé par [@SiegfriedEhret](http://twitter.com/SiegfriedEhret)
+          </script>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Stylus, ca a du style pour...
+            </script>
+					</section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Variables
+              
+              ```
+              // Entier
+              $integer = 5
+
+              // Booléen
+              $boolean = true
+
+              // Mesure
+              $length = 15px
+
+              // Couleur
+              $color = #BADA55
+
+              // Chaine de caractères
+              $string = 'images/ma-super-image.jpg'
+              ```
+            </script>
+					</section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Nesting
+              ```
+              .ma-liste 
+              float left    
+              a 
+                display block 
+                &:hover, &:focus 
+                  text-decoration: none
+              ```
+              CSS
+              ```
+              .ma-liste {
+                float: left;
+              }
+              .ma-liste a {
+                display: block;
+              }
+              .ma-liste a:hover,
+              .ma-liste a:focus {
+                text-decoration: none;
+              } 
+              ```
+              http://learnboost.github.io/stylus/docs/selectors.html (Parent Reference)
+            </script>
+					</section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Fonctions
+              ```
+              ma-fonction($a, $b, $c)
+                ($a + $b) / $c
+              ```
+              ```
+              .mon-element 
+                  width ma-fonction(120px, 20px, 2)
+              ```
+              CSS
+              ```
+              .mon-element {
+                width: 70px;
+              } 
+              ```
+            </script>
+					</section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Mixins
+              ```
+              mon-mixin($a)
+                border 1px solid rgba(0, 0, 0, .1)
+                color white
+                background deepskyblue
+                text-align $a
+              ```
+              ```
+              .mon-element 
+                  mon-mixin(center)
+              ```
+              CSS
+              ```
+              .mon-element {
+                border: 1px solid rgba(0,0,0,0.1);
+                color: #fff;
+                background: #00bfff;
+                text-align: center;
+              } 
+              ```
+            </script>
+					</section>
+					<section data-markdown>
+            <script type="text/template">
+              ## Gestion des couleurs
+              ```
+              $color = #2ecc71;
+              $lighten = lighten($color, 15); // #69dd9a
+              $darken = darken($color, 15); // #208e4e
+              $transp = rgba($color,  .5); // rgba(46, 204, 113, 0.5)
+              ```
+              http://learnboost.github.io/stylus/docs/bifs.html
+            </script>
+            <ul style="list-style: none; overflow: hidden; margin: 1em auto; width: 50%; color: white; text-align: center;">
+              <li style="float: left; width: 50%; height: 4em; background-color: rgb(46, 204, 113);">
+              <br>$color</li>
+                  <li style="float: left; width: 50%; height: 4em; background-color: rgb(105, 221, 154);">
+              <br>$lighten</li>
+                  <li style="float: left; width: 50%; height: 4em; background-color: rgb(32, 142, 78); clear: both;">
+              <br>$darken</li>
+                  <li style="float: left; width: 50%; height: 4em; background-color: rgba(46, 204, 113, 0.498039);">
+              <br>$transp</li>
+              </ul>
+					</section>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
