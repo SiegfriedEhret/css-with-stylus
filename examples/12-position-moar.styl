@@ -1,0 +1,13 @@
+pos(top, right, bottom, left, position = absolute)
+  if top != auto
+    top top
+  if right != auto
+    right right
+  if bottom != auto
+    bottom bottom
+  if left != auto
+    left $left
+  position position
+
+.element
+  pos(1em, .5em, auto, auto)

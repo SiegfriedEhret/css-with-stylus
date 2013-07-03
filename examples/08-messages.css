@@ -1,0 +1,21 @@
+.message-error,
+.message-ok,
+.message-warn {
+  border: 1px solid;
+  font-weight: bold;
+}
+.message-error {
+  border-color: #e60000;
+  color: #b30000;
+  background: #fcc;
+}
+.message-ok {
+  border-color: #006700;
+  color: #003400;
+  background: #4dff4d;
+}
+.message-warn {
+  border-color: #e69500;
+  color: #b37300;
+  background: #ffedcc;
+}

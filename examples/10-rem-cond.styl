@@ -1,0 +1,9 @@
+rem(value, base = 16)
+  if support-ie8
+    font-size (value)px
+  font-size (value / base)rem
+
+support-ie8 ?= false
+
+.mon-element
+  rem(24)

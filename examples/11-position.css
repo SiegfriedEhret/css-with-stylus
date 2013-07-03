@@ -1,0 +1,7 @@
+.element {
+  top: 1em;
+  right: 0.5em;
+  bottom: auto;
+  left: auto;
+  position: absolute;
+}

@@ -1,0 +1,21 @@
+$message
+  border 1px solid
+  font-weight bold
+
+.message-error
+  @extend $message
+  border-color darken(red,5)
+  color darken(red, 15)
+  background lighten(red, 40)
+
+.message-ok
+  @extend $message
+  border-color darken(green,5)
+  color darken(green, 15)
+  background lighten(green, 40)
+
+.message-warn
+  @extend $message
+  border-color darken(orange,5)
+  color darken(orange, 15)
+  background lighten(orange, 40)

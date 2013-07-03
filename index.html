@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="examples/08-messages.css"/>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -46,7 +47,6 @@
           </script>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
 					<section data-markdown>
             <script type="text/template">
@@ -155,20 +155,281 @@
               $darken = darken($color, 15); // #208e4e
               $transp = rgba($color,  .5); // rgba(46, 204, 113, 0.5)
               ```
+
+              <ul style="list-style: none; overflow: hidden; margin: 1em auto; width: 50%; color: white; text-align: center;">
+                <li style="float: left; width: 50%; height: 4em; background-color: rgb(46, 204, 113);">
+                  <br>$color</li>
+                <li style="float: left; width: 50%; height: 4em; background-color: rgb(105, 221, 154);">
+                  <br>$lighten</li>
+                <li style="float: left; width: 50%; height: 4em; background-color: rgb(32, 142, 78); clear: both;">
+                  <br>$darken</li>
+                <li style="float: left; width: 50%; height: 4em; background-color: rgba(46, 204, 113, 0.498039);">
+                  <br>$transp</li>
+              </ul>
+
               http://learnboost.github.io/stylus/docs/bifs.html
             </script>
-            <ul style="list-style: none; overflow: hidden; margin: 1em auto; width: 50%; color: white; text-align: center;">
-              <li style="float: left; width: 50%; height: 4em; background-color: rgb(46, 204, 113);">
-              <br>$color</li>
-                  <li style="float: left; width: 50%; height: 4em; background-color: rgb(105, 221, 154);">
-              <br>$lighten</li>
-                  <li style="float: left; width: 50%; height: 4em; background-color: rgb(32, 142, 78); clear: both;">
-              <br>$darken</li>
-                  <li style="float: left; width: 50%; height: 4em; background-color: rgba(46, 204, 113, 0.498039);">
-              <br>$transp</li>
-              </ul>
 					</section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Concatenation des fichiers
+
+              Multiples fichiers côté développement.
+
+              ```
+              /* styles.scss */
+              @import "modules"; // module.styl
+              @import "helpers"; // helpers.styl
+              @import "reset";   // reset.styl
+              @import "main";    // main.styl
+              ```
+
+              Un seul fichier en production.
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## ... le responsive web design,
+              ## les architectures modulaires,
+              ## les calculs, les namespaces,
+              ## le café, la vaisselle ...
+            </script>
+          </section>
 				</section>
+
+        <section data-markdown>
+          <script type="text/template">
+            # Aller plus loin
+
+            # Que 2 variables
+
+            # Et 3 mixins
+
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## @extend & classes abstraites
+
+              ```
+              $clearfix
+                &:after
+                  content ''
+                  display table
+                  clear both
+              ```
+              ```
+              .float-container
+                @extend $clearfix
+              ```
+              CSS
+              ```
+              .float-container:after {
+                content: '';
+                display: table;
+                clear: both;
+              }
+              ```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Messages en pagaille
+
+              <div class="message-error">Erreur, merci de faire quelque chose !</div>
+              <div class="message-ok">Tout est OK, veuillez circuler.</div>
+              <div class="message-warn">Vous devriez peut-être faire attention.</div>
+              <div class="message">Petite information...</div>
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ```
+              $message
+                border 1px solid
+                font-weight bold
+
+              .message-error
+                @extend $message
+                border-color darken(red,5)
+                color darken(red, 15)
+                background lighten(red, 40)
+
+              .message-ok
+                @extend $message
+                border-color darken(green,5)
+                color darken(green, 15)
+                background lighten(green, 40)
+
+              .message-warn
+                @extend $message
+                border-color darken(orange,5)
+                color darken(orange, 15)
+                background lighten(orange, 40)
+              ```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ```
+              .message-error,
+              .message-ok,
+              .message-warn {
+                border: 1px solid;
+                font-weight: bold;
+              }
+              .message-error {
+                border-color: #e60000;
+                color: #b30000;
+                background: #fcc;
+              }
+              .message-ok {
+                border-color: #006700;
+                color: #003400;
+                background: #4dff4d;
+              }
+              .message-warn {
+                border-color: #e69500;
+                color: #b37300;
+                background: #ffedcc;
+              }
+              ```
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## REM, le graal du font-sizing
+
+              <img src="./images/4pCae.jpg" alt="REM support"/>
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## calculs & fallbacks
+
+              ```
+              rem(value, base = 16)
+                font-size (value)px
+                font-size (value / base)rem
+
+              .mon-element
+                rem(24)
+              ```
+              CSS
+              ```
+              .mon-element {
+                font-size: 24px; /* Internet Explorer 8 */
+                font-size: 1.5rem; /* Autres navigateurs  */
+              }
+              ```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Conditionner le rendu
+
+              ```
+              rem(value, base = 16)
+                if support-ie8
+                  font-size (value)px
+                font-size (value / base)rem
+
+              support-ie8 ?= false
+
+              .mon-element
+                rem(24)
+              ```
+              CSS
+              ```
+              .mon-element {
+                font-size: 1.5rem;
+              }
+              ```
+              http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Vite, en position !
+
+              ```
+              pos(top, right, bottom, left, position = absolute)
+                top top
+                right right
+                bottom bottom
+                left left
+                position position
+              ```
+              ```
+              .element
+                pos(1em, .5em, auto, auto)
+              ```
+              CSS
+              ```
+              .element {
+                top: 1em;
+                right: 0.5em;
+                bottom: auto;
+                left: auto;
+                position: absolute;
+              }
+              ```
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Les perfs, toujours les perfs
+
+              Moins de lignes générées...
+
+              ```
+              pos(top, right, bottom, left, position = absolute)
+                if top != auto
+                  top top
+                if right != auto
+                  right right
+                if bottom != auto
+                  bottom bottom
+                if left != auto
+                  left $left
+                position position
+
+              .element
+              pos(1em, .5em, auto, auto)
+              ```
+
+              ... plus vite la page est chargée !
+            </script>
+          </section>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Media queries pour les nuls
+
+              <img src="./images/responsive_web_design.png" alt="Responsive web design"/>
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## One mixin to rule them all
+
+              ```
+                Je ne sais pas comment faire ca pour l'instant !
+              ```
+
+            </script>
+          </section>
+        </section>
 
 
 			</div>
