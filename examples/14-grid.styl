@@ -1,0 +1,19 @@
+nb-columns = 6
+wrap-width = 1140px
+column-width = 180px
+
+gutter-width = (wrap-width - nb-columns * column-width) / nb-columns
+column-pct = (column-width / wrap-width) * 100
+gutter-pct = (gutter-width / wrap-width) * 100
+
+cols(nb)
+  width (column-pct*nb + gutter-pct*(nb - 1))%
+  margin-right (gutter-pct)%;
+  float left
+
+  @media screen and (max-width: 400px)
+    width 100%
+    margin-right 0
+
+body
+  cols(4)

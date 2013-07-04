@@ -431,7 +431,70 @@
           </section>
         </section>
 
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## grilles & frameworks
 
+              <img src="./images/gri.jpg" alt="Grille"/>
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## 1KB GRID, 960 GRID SYSTEM, BLUEPRINT, Columnal, CSSWIZARDRY GRIDS, FEM CSS, FLEXGRID, FLUIDABLE, FOUNDATION, FRAMELESS, Golden Grid, GRIDSET, GROUNDWORK, GUMBY, HELIUM, JUSTIFYGRID, Knacss, KUBE, LESS FRAMEWORK, ONE% CSS GRID, Responsive Grid System, RWDGRID, SASS GRID, SUSY, TWITTER BOOTSTRAP SCAFFOLDING, UNSEMANTIC, xCSS, Zen Grids...
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Une grille RESPONSIVE simple
+              <div style="max-width: 100%; height: 100%;">
+                <div style="width: 99.12282%; background-color: rgb(255, 99, 71); margin-bottom: 0.5em; padding: 0.5em 0px;">.header { @include cols(6) }</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px;">@</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px;">include</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px;">{</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px;">cols</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px;">(1)</div>
+                <div style="width: 15.78947%; background-color: rgb(0, 191, 255); float: left; margin-right: 0.87719%; padding: 1em 0px; margin-bottom: 0.5em;">}</div>
+                <div style="width: 99.12282%; background-color: rgb(255, 99, 71); clear: both; padding: 0.5em 0px;">.footer { @include&nbsp;<span style="font-size: 36px; font-style: normal; font-variant: normal;">cols</span>(6) }</div>
+              </div>
+
+              http://css-tricks.com/dont-overthink-it-grids/
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ## 13 lignes
+              ```
+              nb-columns = 6
+              wrap-width = 1140px
+              column-width = 180px
+
+              gutter-width = (wrap-width - nb-columns * column-width) / nb-columns
+              column-pct = (column-width / wrap-width) * 100
+              gutter-pct = (gutter-width / wrap-width) * 100
+
+              cols(nb)
+                width (column-pct*nb + gutter-pct*(nb - 1))%
+                margin-right (gutter-pct)%;
+                float left
+
+              @media screen and (max-width: 400px)
+                width 100%
+                margin-right 0
+              ```
+            </script>
+          </section>
+
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ## CSS counters + Sass = epicwin
+
+            </script>
+          </section>
+        </section>
 			</div>
 
 		</div>
